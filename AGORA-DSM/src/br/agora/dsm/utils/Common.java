@@ -51,8 +51,8 @@ public class Common {
 	/**
 	 * Caminho para pegar os JSON
 	 */
-	// public final static String SERVER_PATH = "/docs/";
-	public final static String SERVER_PATH = "E:/Desenvolvimento/Agora/AGORA-DSM/AGORA-DSM/docs/";
+	 public final static String SERVER_PATH = "/docs/";
+//	public final static String SERVER_PATH = "E:/Desenvolvimento/Agora/AGORA-DSM/AGORA-DSM/docs/";
 
 //	public final static String SOS_PATH = "http://localhost:8080/52n-sos-webapp/service";
 	public final static String SOS_PATH = "http://localhost:8081/52n-sos-webapp/service";

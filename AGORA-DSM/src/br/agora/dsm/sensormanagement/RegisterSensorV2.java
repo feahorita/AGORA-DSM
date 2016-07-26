@@ -51,14 +51,12 @@ public class RegisterSensorV2 {
 
 			jsonObject1.put("procedure", message.get("sensor_id"));
 
-			System.out.println("Describe Sensor - " + message.get("sensor_id"));
-
 			Common.SOS_request describeSensor = Common.httpPost_JSON(jsonObject1);
 
 			int existsProperty = 0;
-			System.out.println(jsonObject1.toJSONString());
+			
 			if (describeSensor.getResult() == 200) {
-				System.out.println("Describe Sensor - Result = 200");
+				
 				JSONObject describeJSON = describeSensor.getRequest();
 
 				JSONObject description;
@@ -71,7 +69,6 @@ public class RegisterSensorV2 {
 					description = (JSONObject) describeJSON.get("procedureDescription");
 				}
 
-				System.out.println("Before Reading SensorML");
 				// reading SensorML
 				String strSensorML = description.get("description").toString();
 
@@ -89,10 +86,9 @@ public class RegisterSensorV2 {
 						existsProperty = 1;
 					i++;
 				}
-				System.out.println("Exit = 200");
-			} if (describeSensor.getResult() != 200 || existsProperty == 0) {
-				System.out.println("Describe Sensor - Result != 200");
 				
+			} if (describeSensor.getResult() != 200 || existsProperty == 0) {
+								
 				// reading SOS operation json
 				JSONParser parser = new JSONParser();
 
@@ -129,7 +125,6 @@ public class RegisterSensorV2 {
 					node4.getFirstChild().setNodeValue(agency);
 				}
 
-				System.out.println("Before Reading SensorML / != 200");
 				// setting sensor_name within SensorML
 				if (message.get("sensor_name") != null) {
 					sensor_name = message.get("sensor_name").toString().replace(" ", "_");
@@ -202,11 +197,9 @@ public class RegisterSensorV2 {
 				// feature of interest = "featureOfInterestType":
 				// "http://www.opengis.net/def/samplingFeatureType/OGC-OM/2.0/SF_SamplingPoint"
 
-				System.out.println("JSON != 200");
 				// sending http post request using a json as parameter
 				Common.httpPost_JSON(jsonObject);
 
-				System.out.println("Exit != 200");
 			}
 
 		} catch (Exception e) {
